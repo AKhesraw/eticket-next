@@ -218,8 +218,9 @@ export const menuItems = [
 export default function MainNav() {
   const [isOpen, setOpen] = useState(false);
   return (
-    <div className="border-b bg-white dark:bg-slate-900">
-      <nav className="bg-white dark:bg-slate-900 max-w-[1366px] mx-auto flex justify-end desktop:justify-between h-16 items-center px-10">
+    <div className="relative border-b bg-white dark:bg-black">
+        <div className="dark:hidden -z-0 absolute inset-0 bg-gradient-to-r from-white via-primary/5 to-white" />
+      <nav className="bg-white dark:bg-black max-w-[1366px] mx-auto flex justify-end desktop:justify-between h-16 items-center px-6 desktop:px-10">
         {/* Main Navigation */}
         <div className="hidden desktop:flex desktop:items-center desktop:space-x-2">
           {menuItems.map((item) => (
@@ -227,7 +228,7 @@ export default function MainNav() {
           ))}
         </div>
         {/* Right side items */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 z-20">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button

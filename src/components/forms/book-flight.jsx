@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { DatePickerWithRange } from "@/components/utils/date-picker-with-range";
-import { ArrowRightLeft } from "lucide-react";
+import { ArrowRightLeft, Plus, X } from "lucide-react";
 import Papa from "papaparse";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -38,7 +38,6 @@ export default function BookFlightForm() {
   ]);
   const [airports, setAirports] = useState([]);
   const [displayedAirports, setDisplayedAirports] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSwapLocations = (index) => {
     if (tripType === "multi-city") {
@@ -154,66 +153,40 @@ export default function BookFlightForm() {
   };
 
   return (
-    <form className="space-y-6 bg-muted/5 p-8 pt-4 rounded-b-[30px] shadow-inner">
-      <div className="flex flex-col sm:justify-between sm:flex-row items-center justify-center">
-        <div className="flex mt-2 sm:mt-0 justify-center">
-          <Badge
-            type="button"
-            className={`pb-1 border border-border select-none hover:cursor-pointer font-medium rounded-full transition-all duration-300 ${
-              tripType === "one-way"
-                ? "bg-primary text-buttonText shadow-md"
-                : "bg-transparent text-foreground hover:bg-primary/30"
-            }`}
-            onClick={() => setTripType("one-way")}
-          >
-            One way
-          </Badge>
-          <Badge
-            type="button"
-            className={`pb-1 border border-border select-none hover:cursor-pointer mx-2 font-medium rounded-full transition-all duration-300 ${
-              tripType === "round-trip"
-                ? "bg-primary text-buttonText shadow-md"
-                : "bg-transparent text-foreground hover:bg-primary/30 "
-            }`}
-            onClick={() => setTripType("round-trip")}
-          >
-            Round trip
-          </Badge>
-          <Badge
-            type="button"
-            className={`pb-1 border border-border  select-none hover:cursor-pointer font-medium rounded-full transition-all duration-300 ${
-              tripType === "multi-city"
-                ? "bg-primary text-buttonText shadow-md"
-                : "bg-transparent text-foreground hover:bg-primary/30"
-            }`}
-            onClick={() => setTripType("multi-city")}
-          >
-            Multi-city
-          </Badge>
+    <form className="space-y-6 bg-muted/5 p-4 pt-4 rounded-b-[30px] shadow-inner">
+      <div className="flex flex-col gap-y-4 sm:flex-row sm:justify-between sm:gap-y-0">
+        <div className="flex flex-col sm:flex-row sm:gap-y-0 sm:gap-x-2 gap-y-4 order-2 sm:order-1">
+          <Badge type="button"
+            className={`search-pill ${ tripType === "one-way" ? "search-pill-active" : "search-pill-normal" }`} onClick={() => setTripType("one-way")}>One way</Badge>
+          <Badge type="button"
+            className={`search-pill ${ tripType === "round-trip" ? "search-pill-active" : "search-pill-normal"}`} onClick={() => setTripType("round-trip")}>Round trip</Badge>
+          <Badge type="button"
+            className={` search-pill ${ tripType === "multi-city" ? "search-pill-active": "search-pill-normal" }`} onClick={() => setTripType("multi-city")}>Multi-city</Badge>
         </div>
-        <div>
+        <div className="self-end sm:self-auto order-1 sm:order-2">
           {showPromoInput ? (
-            <div className=" flex  mt-2 sm:mt-4">
-              <Input
-                type="text"
-                placeholder="Enter promo code"
-                className="border rounded-md px-2 py-1  rounded-tr-none rounded-br-none"
-                value={promoCode}
-                onChange={(e) => setPromoCode(e.target.value)}
-              />
-              <Button onClick={handlePromoSubmit} className="rounded-l-none">
-                Submit
-              </Button>
+            <div className="flex items-center gap-x-3">
+              <X className="size-4 cursor-pointer" onClick={() => setShowPromoInput(false)}/>
+              <div className="flex">
+                <Input
+                  type="text"
+                  placeholder="Enter promo code"
+                  className="text-xs border rounded-md border-r-none px-2 py-1 shadow-none rounded-tr-none rounded-br-none"
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                />
+                <Button onClick={handlePromoSubmit} className="rounded-l-none">
+                  Submit
+                </Button>
+              </div>
             </div>
           ) : (
             <Button
               onClick={() => setShowPromoInput(!showPromoInput)}
-              className=" px-1 bg-transparent text-foreground/60  hover:text-primary hover:bg-transparent  rounded-full flex items-center"
+              className="px-3 bg-transparent text-foreground/60 hover:text-primary hover:bg-transparent rounded-full flex items-center"
             >
-              <div className="w-6 h-6 bg-transparent rounded-full  flex items-center justify-center">
-                <span className=" pb-1 text-lg relative ">+</span>
-              </div>
-              Add promo code
+              <Plus />
+              <span className="text-xs">Add Promo Code</span>
             </Button>
           )}
         </div>
@@ -229,9 +202,9 @@ export default function BookFlightForm() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -1000 }}
                 transition={{ duration: 0.2 }}
-                className="flex flex-col md:flex-col lg:flex-row sm:flex-row flex-cols-3 gap-4 justify-between"
+                className="flex flex-col md:flex-col lg:flex-row flex-cols-3 gap-4 justify-between"
               >
-                <div className="flex flex-col lg:flex-row sm:flex-row items-center col-span-2 space-x-1 w-full   sm:min-w-[700px]">
+                <div className="flex flex-col lg:flex-row md:flex-row items-center col-span-2 space-x-1 w-full ">
                   <ComboBox
                     frameworks={fromOptions}
                     value={flight.from.value}
@@ -246,7 +219,7 @@ export default function BookFlightForm() {
                   <button
                     type="button"
                     onClick={() => handleSwapLocations(index)}
-                    className="text-primary  hover:text-primary my-2 transition-transform duration-500 transform hover:rotate-180 active:rotate-[-0deg]"
+                    className="text-primary hover:text-primary my-2 transition-transform duration-500 transform hover:rotate-180 active:rotate-[-0deg]"
                   >
                     <ArrowRightLeft size={20} />
                   </button>
@@ -292,8 +265,7 @@ export default function BookFlightForm() {
             ))}
           </AnimatePresence>
           <div className="flex flex-col sm:flex-row justify-end gap-4 w-full">
-            <div className="flex w-full sm:w-[440px] gap-4 justify-between">
-              <div className="w-full">
+            <div className="flex flex-col sm:flex-row w-full sm:w-[440px] gap-4 justify-between">
                 <Passenger
                   passengerCounts={passengerCounts}
                   setPassengerCounts={setPassengerCounts}
@@ -301,9 +273,6 @@ export default function BookFlightForm() {
                   placeholder={"Passengers"}
                   heading={"Passengers"}
                 />
-              </div>
-
-              <div className="w-full">
                 <ComboBox
                   frameworks={classes}
                   value={travelClass.value}
@@ -312,7 +281,6 @@ export default function BookFlightForm() {
                   placeholder={"Class"}
                   buttonSearch={false}
                 />
-              </div>
             </div>
 
             <div className="w-full sm:w-auto flex justify-end">
@@ -327,8 +295,8 @@ export default function BookFlightForm() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col sm:flex-col lg:flex-row gap-4">
-          <div className="flex flex-col sm:flex-row lg:flex-row items-center justify-center space-x-0 sm:space-x-1 w-full lg:w-1/2">
+        <div className="flex flex-col lg:flex-row gap-4 flex-wrap xl:items-center xl:justify-center">
+          <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-1">
             <ComboBox
               frameworks={fromOptions}
               value={from.value}
@@ -336,7 +304,6 @@ export default function BookFlightForm() {
               width={"full sm:w-[calc(50%-1rem)] lg:w-[200px]"}
               placeholder={"Departure"}
             />
-
             <button
               type="button"
               onClick={handleSwapLocations}
@@ -344,56 +311,42 @@ export default function BookFlightForm() {
             >
               <ArrowRightLeft size={20} />
             </button>
-
-            {
-              <ComboBox
-                frameworks={toOptions}
-                value={to.value}
-                setValue={setTo}
-                width={"full sm:w-[calc(50%-1rem)] lg:w-[200px]"}
-                placeholder={"Destination"}
-              />
-            }
-          </div>
-
-          <div className="w-full ">
-            <DatePickerWithRange
-              monthsShown={3}
-              date={dateRange}
-              setDate={handleDateChange}
-              mode={tripType === "round-trip" ? "range" : "single"}
-              placeholder={"Select dates"}
-              width={"[200xp]"}
+            <ComboBox
+              frameworks={toOptions}
+              value={to.value}
+              setValue={setTo}
+              width={"full sm:w-[calc(50%-1rem)] lg:w-[200px]"}
+              placeholder={"Destination"}
             />
           </div>
-
-          <div className="flex flex-col sm:flex-row lg:flex-row gap-4 w-full lg:w-auto">
-            <div className="w-full sm:w-1/2 lg:w-auto">
-              <Passenger
-                passengerCounts={passengerCounts}
-                setPassengerCounts={setPassengerCounts}
-                width={"full  md:w-full lg:w-[200px]"}
-                placeholder={"Passengers"}
-                heading={"Passengers"}
-              />
-            </div>
-
-            <div className="w-full sm:w-1/2 lg:w-auto">
-              <ComboBox
-                frameworks={classes}
-                value={travelClass.value}
-                setValue={setTravelClass}
-                width={"full md:w-full lg:w-[200px]"}
-                placeholder={"Class"}
-                buttonSearch={false}
-              />
-            </div>
-          </div>
+          <DatePickerWithRange
+            monthsShown={3}
+            date={dateRange}
+            setDate={handleDateChange}
+            mode={tripType === "round-trip" ? "range" : "single"}
+            placeholder={"Select dates"}
+            width={"[200xp]"}
+          />
+          <Passenger
+            passengerCounts={passengerCounts}
+            setPassengerCounts={setPassengerCounts}
+            width={"full  md:w-full lg:w-[200px]"}
+            placeholder={"Passengers"}
+            heading={"Passengers"}
+          />
+          <ComboBox
+            frameworks={classes}
+            value={travelClass.value}
+            setValue={setTravelClass}
+            width={"full md:w-full lg:w-[200px]"}
+            placeholder={"Class"}
+            buttonSearch={false}
+          />
         </div>
       )}
 
-      <Button className="w-full bg-primary text-buttonText rounded-full sm:rounded-t-xl  sm:rounded-b-3xl transition-colors duration-300 font-medium text-lg shadow-md hover:bg-primary/90">
-        Search flights
+      <Button className="w-full bg-primary text-buttonText rounded-full sm:rounded-t-xl  sm:rounded-b-3xl transition-colors duration-300 font-medium text-sm sm:text-base shadow-md hover:bg-primary/90">
+        Search Flights
       </Button>
     </form>
   );

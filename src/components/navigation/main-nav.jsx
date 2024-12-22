@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from "react";
 import ThemeSwitcher from "@/components/theme/theme-switcher";
 import NavItem from "@/components/navigation/nav-item";
@@ -29,6 +31,7 @@ export const menuItems = [
   {
     label: "Dashboard",
     icon: LayoutDashboard,
+    href: "/admin/dashboard"
   },
   {
     label: "Search",

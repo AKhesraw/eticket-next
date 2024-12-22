@@ -79,3 +79,15 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.search-pill {
+  @apply whitespace-nowrap w-full p-2 select-none hover:cursor-pointer font-medium transition-all duration-300 text-center sm:rounded-full sm:px-3
+}
+
+.search-pill-active {
+  @apply bg-primary text-buttonText shadow-md
+}
+
+.search-pill-normal {
+  @apply bg-transparent text-foreground hover:bg-primary/30 hover:text-white dark:hover:bg-white dark:hover:text-black
+}

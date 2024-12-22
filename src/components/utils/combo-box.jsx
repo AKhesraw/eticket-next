@@ -1,6 +1,5 @@
-import React from "react";
+import { useState } from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,7 +9,6 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@/components/ui/command";
 import {
   Popover,
@@ -27,7 +25,7 @@ function ComboBox({
   buttonSearch = true,
   dropdownWidth = 230,
 }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -115,7 +113,7 @@ const Passenger = ({
   placeholder,
   heading,
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const incrementPassenger = (type) => {
     setPassengerCounts((prev) => ({ ...prev, [type]: prev[type] + 1 }));
@@ -204,7 +202,7 @@ const Passenger = ({
 };
 
 const Classes = ({ classes, value, setValue }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

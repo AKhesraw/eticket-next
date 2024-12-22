@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function BreadCrumbs({ links = [] }) {
   return (
-    <div className="shadow-sm bg-white/30 dark:bg-slate-900">
-      <div className="max-w-[1366px] mx-auto bg-white/30 dark:bg-slate-900 px-12">
+    <div className="shadow-sm bg-white/30 dark:bg-black">
+      <div className="max-w-[1366px] mx-auto bg-white/30 dark:bg-black px-4 desktop:px-12">
         <div className="flex h-9">
           {links.map((link, index) => (
             <div

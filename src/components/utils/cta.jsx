@@ -3,7 +3,7 @@ import BookFlightForm from "@/components/forms/book-flight";
 import { usePathname } from "next/navigation";
 export default function CTA() {
   const location = usePathname();
-  const tabs = [{ id: "/admin", label: "Flight", component: "BookFlightForm" }];
+  const tabs = [{ id: "/admin", label: "Flight" }];
   return (
     <div
       data-aos="fade-up"

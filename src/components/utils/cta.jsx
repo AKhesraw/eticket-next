@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import {useState} from "react";
 export default function CTA() {
   const [tabIndex, setIndex] = useState(0);
-  const location = usePathname();
   const tabs = [
     { id: "/admin", label: "Flight" },
     { id: "/hotels", label: "Hotels" },

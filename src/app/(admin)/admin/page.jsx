@@ -68,7 +68,7 @@ export default function Dashboard() {
         <BreadCrumbs links={[{ label: "Search", route: "/search", current: true }]}/>
       </header>
       <div className="max-w-7xl mx-auto p-6 space-y-6">
-        <Card className="shadow-none">
+        <Card className="shadow-none dark:bg-black">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div className="space-y-2">

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import BookFlightForm from "@/components/forms/book-flight";
 import { usePathname } from "next/navigation";
 export default function CTA() {
@@ -11,29 +10,15 @@ export default function CTA() {
     { id: "/packages", label: "Packages" }
   ];
   return (
-    <div
-      data-aos="fade-up"
-      data-aos-mirror="true"
-      data-aos-once="true"
-      className="z-10"
-    >
-      <div className="mx-auto max-w-7xl bg-cover bg-center bg-no-repeat overflow-x-hidden">
-          <div className="rounded-2xl rounded-b-[30px] border bg-background/70 max-w-7xl mx-auto overflow-hidden">
-            <div className="flex flex-col sm:flex-row rounded-t-2xl">
+      <div className="bg-white dark:bg-black mx-auto max-w-7xl overflow-hidden border rounded-2xl">
+          <div className="rounded-b-[30px]  dark:bg-black max-w-7xl mx-auto overflow-hidden">
+            <div className="flex flex-col sm:flex-row rounded-t-2xl overflow-hidden">
               {tabs.map((tab) => (
                 <div key={tab.id} className="w-full">
-                  <Link href={tab.id} key={tab.id}>
-                    <div
-                      className={`w-full text-center rounded-t-2xl py-4 px-6 text-sm font-medium border-primary
-                      ${
-                        location === tab.id
-                          ? "text-primary bg-background border-b-2 border-primary"
-                          : "text-foreground hover:text-accent-foreground"
-                      }`}
-                    >
+                    <button key={tab.id}
+                      className={`search-tab-item ${location === tab.id && "search-tab-active"}`}>
                       {tab.label}
-                    </div>
-                  </Link>
+                    </button>
                 </div>
               ))}
             </div>
@@ -45,7 +30,6 @@ export default function CTA() {
               {location === "/packages" && <></>}
             </div>
           </div>
-      </div>
     </div>
   );
 }

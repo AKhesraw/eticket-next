@@ -157,11 +157,11 @@ export default function BookFlightForm() {
       <div className="flex flex-col gap-y-4 sm:flex-row sm:justify-between sm:gap-y-0">
         <div className="flex flex-col sm:flex-row sm:gap-y-0 sm:gap-x-2 gap-y-4 order-2 sm:order-1">
           <Badge type="button"
-            className={`search-pill ${ tripType === "one-way" ? "search-pill-active" : "search-pill-normal" }`} onClick={() => setTripType("one-way")}>One way</Badge>
+            className={`search-pill ${ tripType === "one-way" && "search-pill-active" }`} onClick={() => setTripType("one-way")}>One way</Badge>
           <Badge type="button"
-            className={`search-pill ${ tripType === "round-trip" ? "search-pill-active" : "search-pill-normal"}`} onClick={() => setTripType("round-trip")}>Round trip</Badge>
+            className={`search-pill ${ tripType === "round-trip" && "search-pill-active"}`} onClick={() => setTripType("round-trip")}>Round trip</Badge>
           <Badge type="button"
-            className={` search-pill ${ tripType === "multi-city" ? "search-pill-active": "search-pill-normal" }`} onClick={() => setTripType("multi-city")}>Multi-city</Badge>
+            className={` search-pill ${ tripType === "multi-city" && "search-pill-active"}`} onClick={() => setTripType("multi-city")}>Multi-city</Badge>
         </div>
         <div className="self-end sm:self-auto order-1 sm:order-2">
           {showPromoInput ? (

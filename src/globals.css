@@ -116,7 +116,7 @@ body {
 }
 
 .search-pill {
-  @apply whitespace-nowrap w-full p-2 select-none hover:cursor-pointer font-medium transition-all duration-300 text-center sm:rounded-full sm:px-3
+  @apply whitespace-nowrap w-full p-2 select-none hover:cursor-pointer font-medium transition-all duration-300 text-center sm:rounded-full sm:px-3 bg-transparent text-foreground hover:bg-primary/30 hover:text-white dark:hover:bg-primary
 }
 
 .search-pill-active {
@@ -124,5 +124,13 @@ body {
 }
 
 .search-pill-normal {
-  @apply bg-transparent text-foreground hover:bg-primary/30 hover:text-white dark:hover:bg-white dark:hover:text-black
+  @apply bg-transparent text-foreground hover:bg-primary/30 hover:text-white dark:hover:bg-primary
+}
+
+.search-tab-item {
+  @apply w-full border-b-2 text-center rounded-t-2xl py-4 text-sm font-medium border-transparent hover:!text-primary
+}
+
+.search-tab-active {
+  @apply text-primary !border-primary
 }

@@ -2,7 +2,7 @@
 import { TotalPieChart } from "@/components/ui/charts/pie-chart";
 import { RadialChart } from "@/components/ui/charts/radial-chart";
 import { LinearChart } from "@/components/ui/charts/linear-chart";
-import BookingCard from "@/components/flight/booking-card";
+import BookingCard from "@/components/cards/booking-card";
 
 import { Overview } from "@/components/ui/charts/overview-chart";
 import { Input } from "@/components/ui/input";

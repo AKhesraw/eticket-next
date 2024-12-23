@@ -1,8 +1,9 @@
-import Link from "next/link";
 import BookFlightForm from "@/components/forms/book-flight";
+import BookHotelForm from "@/components/forms/book-hotel";
 import { usePathname } from "next/navigation";
+import {useState} from "react";
 export default function CTA() {
-  const location = usePathname();
+  const [tabIndex, setIndex] = useState(0);
   const tabs = [
     { id: "/admin", label: "Flight" },
     { id: "/hotels", label: "Hotels" },
@@ -11,41 +12,26 @@ export default function CTA() {
     { id: "/packages", label: "Packages" }
   ];
   return (
-    <div
-      data-aos="fade-up"
-      data-aos-mirror="true"
-      data-aos-once="true"
-      className="z-10"
-    >
-      <div className="mx-auto max-w-7xl bg-cover bg-center bg-no-repeat overflow-x-hidden">
-          <div className="rounded-2xl rounded-b-[30px] border bg-background/70 max-w-7xl mx-auto overflow-hidden">
-            <div className="flex flex-col sm:flex-row rounded-t-2xl">
-              {tabs.map((tab) => (
+      <div className="bg-white dark:bg-black mx-auto max-w-7xl overflow-hidden rounded-b-[30px] border rounded-2xl">
+          <div className="dark:bg-black max-w-7xl mx-auto overflow-hidden">
+            <div className="flex flex-col sm:flex-row rounded-t-2xl overflow-hidden">
+              {tabs.map((tab, index) => (
                 <div key={tab.id} className="w-full">
-                  <Link href={tab.id} key={tab.id}>
-                    <div
-                      className={`w-full text-center rounded-t-2xl py-4 px-6 text-sm font-medium border-primary
-                      ${
-                        location === tab.id
-                          ? "text-primary bg-background border-b-2 border-primary"
-                          : "text-foreground hover:text-accent-foreground"
-                      }`}
-                    >
+                    <button key={tab.id} onClick={() => setIndex(index)}
+                      className={`search-tab-item ${tabIndex === index && "search-tab-active"}`}>
                       {tab.label}
-                    </div>
-                  </Link>
+                    </button>
                 </div>
               ))}
             </div>
             <div>
-              {location === "/admin" && <BookFlightForm />}
-              {location === "/hotels" && <></>}
-              {location === "/cars" && <></>}
-              {location === "/visa" && <></>}
-              {location === "/packages" && <></>}
+              {tabIndex === 0 && <BookFlightForm />}
+              {tabIndex === 1 && <BookHotelForm />}
+              {tabIndex === 2 && <></>}
+              {tabIndex === 3 && <></>}
+              {tabIndex === 4 && <></>}
             </div>
           </div>
-      </div>
     </div>
   );
 }

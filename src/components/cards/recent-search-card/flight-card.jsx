@@ -16,24 +16,17 @@ export default function FlightCard({ flight }) {
             </div>
 
             <div className="p-4">
-                {/* Class Badge */}
-                <div className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-cyan-500/10 to-cyan-400/10 dark:from-cyan-500/20 dark:to-cyan-400/20 text-cyan-600 dark:text-cyan-400">
-                    {flight.class}
-                </div>
-
                 {/* Flight Route */}
-                <div className="mt-4 space-y-6">
+                <div className=" space-y-6">
                     <div className="flex justify-between items-start">
                         <AirportInfo airport={flight.departure} type="departure" />
                         <AirportInfo airport={flight.arrival} type="arrival" align="right" />
                     </div>
-
                     <FlightPath />
-
                     <FlightInfo
                         date={flight.date}
-                        duration={flight.duration}
                         passengers={flight.passengers}
+                        flightClass={flight.flightClass}
                     />
                 </div>
             </div>

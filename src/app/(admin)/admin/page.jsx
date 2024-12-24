@@ -22,8 +22,7 @@ const bookings = [
     city: 'Kabul'
   },
   date: '2021-01-01',
-  duration: '2h 30m',
-  class: 'Economy',
+  flightClass: 'Economy',
   passengers: 2
 },
   {
@@ -36,8 +35,7 @@ const bookings = [
       city: 'Kabul'
     },
     date: '2021-01-01',
-    duration: '2h 30m',
-    class: 'Economy',
+    flightClass: 'Economy',
     passengers: 2
   },
   {
@@ -50,8 +48,7 @@ const bookings = [
       city: 'Kabul'
     },
     date: '2021-01-01',
-    duration: '2h 30m',
-    class: 'Economy',
+    flightClass: 'Economy',
     passengers: 2
   },
   {
@@ -64,8 +61,7 @@ const bookings = [
       city: 'Kabul'
     },
     date: '2021-01-01',
-    duration: '2h 30m',
-    class: 'Economy',
+    flightClass: 'Economy',
     passengers: 2
   },
   {
@@ -78,8 +74,7 @@ const bookings = [
       city: 'Kabul'
     },
     date: '2021-01-01',
-    duration: '2h 30m',
-    class: 'Economy',
+    flightClass: 'Economy',
     passengers: 2
   },
 ];

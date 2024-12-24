@@ -1,9 +1,8 @@
 "use client";
-
 import MainNav from "@/components/navigation/main-nav";
 import BreadCrumbs from "@/components/utils/bread-crumbs";
 import CTA from "@/components/utils/cta";
-import RecentSearchCard from "@/components/cards/recent-search";
+import RecentSearchCard from "@/components/cards/recent-search-card/flight-card";
 import {
   Carousel,
   CarouselContent,
@@ -13,72 +12,77 @@ import {
 } from "@/components/ui/carousel"
 // Sample data
 const bookings = [
+{
+  departure: {
+    code: 'KBL',
+    city: 'Kabul'
+  },
+  arrival: {
+    code: 'KBL',
+    city: 'Kabul'
+  },
+  date: '2021-01-01',
+  duration: '2h 30m',
+  class: 'Economy',
+  passengers: 2
+},
   {
     departure: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
     arrival: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
-    cabinClass: 'Economy'
+    date: '2021-01-01',
+    duration: '2h 30m',
+    class: 'Economy',
+    passengers: 2
   },
   {
     departure: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
     arrival: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
-    cabinClass: 'Economy'
+    date: '2021-01-01',
+    duration: '2h 30m',
+    class: 'Economy',
+    passengers: 2
   },
   {
     departure: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
     arrival: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
-    cabinClass: 'Economy'
+    date: '2021-01-01',
+    duration: '2h 30m',
+    class: 'Economy',
+    passengers: 2
   },
   {
     departure: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
     arrival: {
-      city: 'Kabul',
       code: 'KBL',
-      dateTime: '2021-01-01',
+      city: 'Kabul'
     },
-    cabinClass: 'Economy'
+    date: '2021-01-01',
+    duration: '2h 30m',
+    class: 'Economy',
+    passengers: 2
   },
-  {
-    departure: {
-      city: 'Kabul',
-      code: 'KBL',
-      dateTime: '2021-01-01',
-    },
-    arrival: {
-      city: 'Kabul',
-      code: 'KBL',
-      dateTime: '2021-01-01',
-    },
-    cabinClass: 'Economy'
-  },
-  ]
+];
 export default function Dashboard() {
 
   return (
@@ -89,10 +93,10 @@ export default function Dashboard() {
       </header>
       <div className="max-w-7xl mx-auto p-6 space-y-6">
         <Carousel opts={{slidesToScroll: 4}}>
-          <CarouselContent>
+          <CarouselContent className="p-3">
             {
               bookings.map((booking, index) => (
-                  <CarouselItem key={index} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                  <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                     <RecentSearchCard flight={booking} />
                   </CarouselItem>
               ))

@@ -1,12 +1,15 @@
+import {useState} from "react";
 import BookFlightForm from "@/components/forms/book-flight";
 import BookHotelForm from "@/components/forms/book-hotel";
-import { usePathname } from "next/navigation";
-import {useState} from "react";
+import BookCarForm from "@/components/forms/book-car";
+import BookVisaForm from "@/components/forms/book-visa";
+import BookPackageForm from "@/components/forms/book-package";
+
 export default function CTA() {
   const [tabIndex, setIndex] = useState(0);
   const tabs = [
     { id: "/admin", label: "Flight" },
-    { id: "/hotels", label: "Hotels" },
+    { id: "/hotels", label: "Cars" },
     { id: "/cars", label: "Cars" },
     { id: "/visa", label: "Visa" },
     { id: "/packages", label: "Packages" }
@@ -27,9 +30,9 @@ export default function CTA() {
             <div>
               {tabIndex === 0 && <BookFlightForm />}
               {tabIndex === 1 && <BookHotelForm />}
-              {tabIndex === 2 && <></>}
-              {tabIndex === 3 && <></>}
-              {tabIndex === 4 && <></>}
+              {tabIndex === 2 && <BookCarForm/>}
+              {tabIndex === 3 && <BookVisaForm/>}
+              {tabIndex === 4 && <BookPackageForm/>}
             </div>
           </div>
     </div>

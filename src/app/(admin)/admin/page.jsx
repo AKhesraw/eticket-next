@@ -12,19 +12,6 @@ import {
 } from "@/components/ui/carousel"
 // Sample data
 const bookings = [
-{
-  departure: {
-    code: 'KBL',
-    city: 'Kabul'
-  },
-  arrival: {
-    code: 'KBL',
-    city: 'Kabul'
-  },
-  date: '2021-01-01',
-  flightClass: 'Economy',
-  passengers: 2
-},
   {
     departure: {
       code: 'KBL',
@@ -36,7 +23,7 @@ const bookings = [
     },
     date: '2021-01-01',
     flightClass: 'Economy',
-    passengers: 2
+    passengers: 2,
   },
   {
     departure: {
@@ -49,7 +36,7 @@ const bookings = [
     },
     date: '2021-01-01',
     flightClass: 'Economy',
-    passengers: 2
+    passengers: 2,
   },
   {
     departure: {
@@ -62,7 +49,7 @@ const bookings = [
     },
     date: '2021-01-01',
     flightClass: 'Economy',
-    passengers: 2
+    passengers: 2,
   },
   {
     departure: {
@@ -75,8 +62,35 @@ const bookings = [
     },
     date: '2021-01-01',
     flightClass: 'Economy',
-    passengers: 2
+    passengers: 2,
   },
+  {
+    departure: {
+      code: 'KBL',
+      city: 'Kabul'
+    },
+    arrival: {
+      code: 'KBL',
+      city: 'Kabul'
+    },
+    date: '2021-01-01',
+    flightClass: 'Economy',
+    passengers: 2,
+  },
+  {
+    departure: {
+      code: 'KBL',
+      city: 'Kabul'
+    },
+    arrival: {
+      code: 'KBL',
+      city: 'Kabul'
+    },
+    date: '2021-01-01',
+    flightClass: 'Economy',
+    passengers: 2,
+  },
+
 ];
 export default function Dashboard() {
 

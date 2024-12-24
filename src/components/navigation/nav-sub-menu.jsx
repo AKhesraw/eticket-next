@@ -17,10 +17,10 @@ export default function NavSubMenu({ items }) {
             <Link
               href={item.href}
               key={index}
-              className={`group relative overflow-hidden rounded-lg border p-4 transition-all hover:shadow-md ${
+              className={`group relative overflow-hidden rounded-lg border p-4 transition-all hover:shadow ${
                 index === 0
-                  ? "bg-gradient-to-br from-primary to-cyan-500 dark:from-cyan-600 dark:to-primary  text-white col-span-full"
-                  : "dark:bg-slate-900 hover:bg-sky-50 dark:hover:bg-slate-700"
+                  ? "border-transparent bg-gradient-to-br from-primary to-cyan-500 dark:from-cyan-600 dark:to-primary  text-white col-span-full"
+                  : "dark:bg-slate-900 dark:hover:bg-slate-900/70"
               }`}
             >
               <div className="relative z-10 flex flex-col gap-2">

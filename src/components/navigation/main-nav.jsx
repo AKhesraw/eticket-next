@@ -27,6 +27,7 @@ import {
   Calendar,
   Menu,
 } from "lucide-react";
+import {usePathname} from "next/navigation";
 export const menuItems = [
   {
     label: "Dashboard",
@@ -36,6 +37,7 @@ export const menuItems = [
   {
     label: "Search",
     icon: Search,
+    href: "/admin"
   },
   {
     label: "Bookings",
@@ -219,6 +221,7 @@ export const menuItems = [
   },
 ];
 export default function MainNav() {
+  const location = usePathname()
   const [isOpen, setOpen] = useState(false);
   return (
     <div className="relative border-b bg-white dark:bg-black">
@@ -227,7 +230,7 @@ export default function MainNav() {
         {/* Main Navigation */}
         <div className="hidden desktop:flex desktop:items-center desktop:space-x-2">
           {menuItems.map((item) => (
-            <NavItem key={item.label} item={item} />
+            <NavItem key={item.label} item={item} active={item.href === location} />
           ))}
         </div>
         {/* Right side items */}
